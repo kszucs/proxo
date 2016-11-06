@@ -1,0 +1,17 @@
+pipeline:
+  build:
+    image: kszucs/miniconda2
+    commands:
+      - python setup.py test
+
+  pypi:
+    repository: https://pypi.python.org/pypi
+    username: $$PYPI_USERNAME
+    password: $$PYPI_PASSWORD
+    distributions:
+      - sdist
+      - bdist_wheel
+    when:
+      event: [tag]
+
+
