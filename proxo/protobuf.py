@@ -30,7 +30,7 @@ REVERSE_TYPE_CALLABLE_MAP = {
     FieldDescriptor.TYPE_SFIXED64: int if six.PY3 else six.integer_types[1],
     FieldDescriptor.TYPE_BOOL: bool,
     FieldDescriptor.TYPE_STRING: six.text_type,
-    FieldDescriptor.TYPE_BYTES: str  # base64.b64encode,
+    FieldDescriptor.TYPE_BYTES: six.binary_type  # base64.b64encode,
 }
 TYPE_CALLABLE_MAP = copy(REVERSE_TYPE_CALLABLE_MAP)
 TYPE_CALLABLE_MAP[FieldDescriptor.TYPE_ENUM] = int
@@ -86,9 +86,9 @@ def protobuf_to_dict(pb, containers=CONTAINER_MAP, converters=TYPE_CALLABLE_MAP)
             converter = converters[field.type]
 
         if field.label == FieldDescriptor.LABEL_REPEATED:
-            converter = partial(map, converter)
-
-        result[field.name] = converter(value)
+            result[field.name] = list(map(converter, value))
+        else:
+            result[field.name] = converter(value)
 
     return result
 

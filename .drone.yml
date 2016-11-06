@@ -1,6 +1,11 @@
+matrix:
+  PYTHON_VERSION:
+    - miniconda2
+    - miniconda3
+
 pipeline:
   build:
-    image: kszucs/miniconda2
+    image: kszucs/${PYTHON_VERSION}
     commands:
       - python setup.py test
 

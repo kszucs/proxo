@@ -1,6 +1,26 @@
 # Proxo
 
-Extensible protobuf messages with python methods properties
+Extend protobuf message with custom methods properties and additional attributes
+
+## TL;DR
+
+```python
+
+from proxo import MessageProxy, encode, decode
+
+class Person(MessageProxy):
+    proto = addressbook_pb2.Person  # it can be more complex, like pattern matching, see below
+    
+    @property
+    def firstname(self):
+        return self.name.split(' ')[0]
+        
+
+p = Person(name='Test Me')
+assert p.firstname == 'Test'
+assert decode(encode(p)) == p
+```
+
 
 ## Usage
 

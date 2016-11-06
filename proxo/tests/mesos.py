@@ -1,11 +1,34 @@
 from __future__ import absolute_import, division, print_function
 
+import six
 import mesos_pb2
 import operator
 
 from uuid import uuid4
 from functools import partial
 from proxo import MessageProxy
+
+
+if six.PY3:
+    def cmp(a, b):
+        return (a > b) - (a < b)
+    # mixin class for Python3 supporting __cmp__
+    class Comparable(object):
+        def __eq__(self, other):
+            return self.__cmp__(other) == 0
+        def __ne__(self, other):
+            return self.__cmp__(other) != 0
+        def __gt__(self, other):
+            return self.__cmp__(other) > 0
+        def __lt__(self, other):
+            return self.__cmp__(other) < 0
+        def __ge__(self, other):
+            return self.__cmp__(other) >= 0
+        def __le__(self, other):
+            return self.__cmp__(other) <= 0
+else:
+    class Comparable(object):
+        pass
 
 
 class Environment(MessageProxy):
@@ -20,8 +43,7 @@ class Resource(MessageProxy):
     proto = mesos_pb2.Resource
 
 
-# TODO: RangeResource e.g. ports
-class ScalarResource(Resource):
+class ScalarResource(Comparable, Resource):
     # supports comparison and basic arithmetics with scalars
     proto = mesos_pb2.Resource(type=mesos_pb2.Value.SCALAR)
 
@@ -95,7 +117,7 @@ class Disk(ScalarResource):
     proto = mesos_pb2.Resource(name='disk', type=mesos_pb2.Value.SCALAR)
 
 
-class ResourcesMixin(object):
+class ResourcesMixin(Comparable):
 
     @classmethod
     def _cast_zero(cls, other=0):
@@ -124,12 +146,6 @@ class ResourcesMixin(object):
             if isinstance(res, Disk):
                 return res
         return Disk(0.0)
-
-    # @property
-    # def ports(self):
-    #     for res in self.resources:
-    #         if isinstance(res, Ports):
-    #             return [(rng.begin, rng.end) for rng in res.ranges.range]
 
     def __repr__(self):
         return '<{}: {}>'.format(self.__class__.__name__,

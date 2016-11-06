@@ -2,6 +2,7 @@ from __future__ import absolute_import, division, print_function
 
 import pytest
 
+from six import with_metaclass
 from proxo.messages import RegisterProxies, MessageProxy, Map
 
 
@@ -87,8 +88,7 @@ def test_dict_hashing():
 
 
 def test_register_proxies():
-    class Base(object):
-        __metaclass__ = RegisterProxies
+    class Base(with_metaclass(RegisterProxies, object)):
         proto = 'base'
 
     class First(Base):

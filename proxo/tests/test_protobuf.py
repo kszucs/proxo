@@ -40,7 +40,7 @@ def compare(m, d, exclude=None):
             assert d[field.name] == getattr(
                 m, field.name), (field.name, d[field.name])
     assert i > 0
-    assert m.byts == str(d['byts'])
+    assert m.byts == d['byts']
     assert d['nested'] == {'req': m.nested.req}
 
 
