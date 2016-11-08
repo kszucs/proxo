@@ -9,13 +9,13 @@ pipeline:
     commands:
       - python setup.py test
 
-  deploy:
-    image: plugins/drone-pypi
-    repository: https://pypi.python.org/pypi
-    username: $$PYPI_USERNAME
-    password: $$PYPI_PASSWORD
-    distributions:
-      - sdist
-      - bdist_wheel
-    when:
-      event: [tag]
+  # deploy:
+  #   image: plugins/drone-pypi
+  #   repository: https://pypi.python.org/pypi
+  #   username: $$PYPI_USERNAME
+  #   password: $$PYPI_PASSWORD
+  #   distributions:
+  #     - sdist
+  #     - bdist_wheel
+  #   when:
+  #     event: [tag]
