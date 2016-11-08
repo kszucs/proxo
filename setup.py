@@ -6,7 +6,7 @@ from os.path import exists
 from setuptools import setup
 
 setup(name='proxo',
-      version='1.0.1',
+      version='1.0.2',
       description='Object proxies (wrappers) for protobuf messages',
       url='http://github.com/kszucs/proxo',
       maintainer='Krisztián Szűcs',
