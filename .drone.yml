@@ -10,7 +10,7 @@ pipeline:
       - python setup.py test
 
   deploy:
-    image: pypi
+    image: plugins/drone-pypi
     repository: https://pypi.python.org/pypi
     username: $$PYPI_USERNAME
     password: $$PYPI_PASSWORD
