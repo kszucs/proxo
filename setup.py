@@ -14,7 +14,7 @@ setup(name='proxo',
       license='Apache License, Version 2.0',
       keywords='protobuf dict object wrapper proxy',
       packages=['proxo'],
-      long_description=(open('README.md').read() if exists('README.md')
+      long_description=(open('README.rst').read() if exists('README.rst')
                         else ''),
       install_requires=['protobuf'],
       setup_requires=['pytest-runner'],
