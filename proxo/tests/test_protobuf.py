@@ -21,10 +21,10 @@ def m():
     m.sf32 = m.si32
     m.sf64 = m.si64
     m.bol = True
-    m.strng = "string"
+    m.strng = 'string'
     m.byts = b'\n\x14\x1e'
     assert len(m.byts) == 3, len(m.byts)
-    m.nested.req = "req"
+    m.nested.req = 'req'
     m.enm = MessageOfTypes.C  # @UndefinedVariable
     m.enmRepeated.extend([MessageOfTypes.A, MessageOfTypes.C])
     m.range.extend(range(10))

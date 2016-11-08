@@ -8,8 +8,10 @@ import six
 from google.protobuf.descriptor import FieldDescriptor
 from google.protobuf.message import Message
 
-__all__ = ["protobuf_to_dict", "TYPE_CALLABLE_MAP", "dict_to_protobuf",
-           "REVERSE_TYPE_CALLABLE_MAP"]
+__all__ = ('protobuf_to_dict',
+           'dict_to_protobuf',
+           'TYPE_CALLABLE_MAP', 
+           'REVERSE_TYPE_CALLABLE_MAP')
 
 
 # adapted from https://github.com/benhodgson/protobuf-to-dict

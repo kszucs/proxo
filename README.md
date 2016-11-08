@@ -10,11 +10,11 @@ from proxo import MessageProxy, encode, decode
 
 class Person(MessageProxy):
     proto = addressbook_pb2.Person  # it can be more complex, like pattern matching, see below
-    
+
     @property
     def firstname(self):
         return self.name.split(' ')[0]
-        
+
 
 p = Person(name='Test Me')
 assert p.firstname == 'Test'
@@ -91,7 +91,7 @@ assert person == proto
 
 # converting back
 mapping = protobuf_to_dict(proto)
-mapping['phone']['number'] 
+mapping['phone']['number']
 mapping.phone.number  # using dot notation
 
 assert mapping == data
@@ -108,20 +108,20 @@ from proxo import MessageProxy, encode, decode
 
 class Person(MessageProxy):
     proto = addressbook_pb2.Person  # it can be more complex, like pattern matching, see below
-    
+
     @property
     def firstname(self):
         return self.name.split(' ')[0]
-        
+
     def call(self):
         try:
             print('calling {}'.format(self.firstname))
             do_voip_call(self.phone.number)
         except:
-            print('failed calling {} on his/her {} number'.format(self.firstname, 
+            print('failed calling {} on his/her {} number'.format(self.firstname,
                                                                   self.phone.type.lower))
 
-obj = Person(id=124, name='John Doe', phone={'number': '555-4321', 
+obj = Person(id=124, name='John Doe', phone={'number': '555-4321',
                                              'type': 'HOME'})
 obj.phone.type = 'MOBILE'
 assert obj.firsname == 'John'
@@ -134,7 +134,7 @@ john.call()
 ```
 
 
-## More Complicated Example 
+## More Complicated Example
 
 ```python
 
@@ -155,7 +155,7 @@ class Resource(MessageProxy):
 
 
 class ScalarResource(Resource):
-    proto = mesos_pb2.Resource(type=mesos_pb2.Value.SCALAR)  # or partially set instance 
+    proto = mesos_pb2.Resource(type=mesos_pb2.Value.SCALAR)  # or partially set instance
 
     def __init__(self, value=None, **kwargs):
         super(Resource, self).__init__(**kwargs)
@@ -215,7 +215,7 @@ class ScalarResource(Resource):
         return self
 
 
-class Cpus(ScalarResource): 
+class Cpus(ScalarResource):
     proto = mesos_pb2.Resource(name='cpus', type=mesos_pb2.Value.SCALAR)
 
 

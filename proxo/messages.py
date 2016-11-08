@@ -19,14 +19,13 @@ class Map(dict):
             return v
         elif isinstance(v, dict):
             return Map(**v)
-        #elif hasattr(v, '__iter__'):
+        # elif hasattr(v, '__iter__'):
         elif isinstance(v, (list, tuple)):
             return list(map(cls.cast, v))
         else:
             return v
 
     def __setitem__(self, k, v):
-        # accidental __missing__ call will create a new node
         super(Map, self).__setitem__(k, self.cast(v))
 
     def __setattr__(self, k, v):

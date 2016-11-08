@@ -18,5 +18,3 @@ pipeline:
       - bdist_wheel
     when:
       event: [tag]
-
-

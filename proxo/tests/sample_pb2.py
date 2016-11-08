@@ -61,7 +61,7 @@ _MESSAGEOFTYPES_NESTEDTYPE = _descriptor.Descriptor(
         _descriptor.FieldDescriptor(
             name='req', full_name='tests.MessageOfTypes.NestedType.req', index=0,
             number=1, type=9, cpp_type=9, label=2,
-            has_default_value=False, default_value=_b("").decode('utf-8'),
+            has_default_value=False, default_value=_b('').decode('utf-8'),
             message_type=None, enum_type=None, containing_type=None,
             is_extension=False, extension_scope=None,
             options=None),
@@ -181,14 +181,14 @@ _MESSAGEOFTYPES = _descriptor.Descriptor(
         _descriptor.FieldDescriptor(
             name='strng', full_name='tests.MessageOfTypes.strng', index=13,
             number=13, type=9, cpp_type=9, label=2,
-            has_default_value=False, default_value=_b("").decode('utf-8'),
+            has_default_value=False, default_value=_b('').decode('utf-8'),
             message_type=None, enum_type=None, containing_type=None,
             is_extension=False, extension_scope=None,
             options=None),
         _descriptor.FieldDescriptor(
             name='byts', full_name='tests.MessageOfTypes.byts', index=14,
             number=14, type=12, cpp_type=9, label=2,
-            has_default_value=False, default_value=_b(""),
+            has_default_value=False, default_value=_b(''),
             message_type=None, enum_type=None, containing_type=None,
             is_extension=False, extension_scope=None,
             options=None),

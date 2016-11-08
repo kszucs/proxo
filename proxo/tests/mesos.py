@@ -13,17 +13,24 @@ if six.PY3:
     def cmp(a, b):
         return (a > b) - (a < b)
     # mixin class for Python3 supporting __cmp__
+
     class Comparable(object):
+
         def __eq__(self, other):
             return self.__cmp__(other) == 0
+
         def __ne__(self, other):
             return self.__cmp__(other) != 0
+
         def __gt__(self, other):
             return self.__cmp__(other) > 0
+
         def __lt__(self, other):
             return self.__cmp__(other) < 0
+
         def __ge__(self, other):
             return self.__cmp__(other) >= 0
+
         def __le__(self, other):
             return self.__cmp__(other) <= 0
 else:
@@ -62,7 +69,7 @@ class ScalarResource(Comparable, Resource):
             return 0
 
     def __repr__(self):
-        return "<{}: {}>".format(self.__class__.__name__, self.scalar.value)
+        return '<{}: {}>'.format(self.__class__.__name__, self.scalar.value)
 
     def __float__(self):
         return float(self.scalar.value)
