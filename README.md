@@ -1,3 +1,5 @@
+[![Build Status](http://drone.lensa.com:8000/api/badges/kszucs/proxo/status.svg)](http://drone.lensa.com:8000/kszucs/proxo)
+
 # Proxo
 
 Extend protobuf message with custom methods properties and additional attributes
